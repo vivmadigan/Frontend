@@ -8,17 +8,17 @@ const AddProjectModal = ({ isOpen, onClose, onSubmit }) => {
   useEffect(() => {
     if (!isOpen) return;
 
-    fetch('https://localhost:7242/api/Clients')
+    fetch('https://vivalpha.azurewebsites.net/api/Clients')
       .then(res => res.json())
       .then(setClients)
       .catch(err => console.error('Error fetching clients:', err));
 
-    fetch('https://localhost:7242/api/Users')
+    fetch('https://vivalpha.azurewebsites.net/api/Users')
       .then(res => res.json())
       .then(setUsers)
       .catch(err => console.error('Error fetching users:', err));
 
-    fetch('https://localhost:7242/api/Statuses')
+    fetch('https://vivalpha.azurewebsites.net/api/Statuses')
       .then(res => res.json())
       .then(setStatuses)
       .catch(err => console.error('Error fetching statuses:', err));
@@ -42,7 +42,7 @@ const AddProjectModal = ({ isOpen, onClose, onSubmit }) => {
     };
 
     try {
-      const response = await fetch('https://localhost:7242/api/Projects', {
+      const response = await fetch('https://vivalpha.azurewebsites.net/api/Projects', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

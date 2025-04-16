@@ -9,7 +9,7 @@ function App() {
   const [showModal, setShowModal] = useState(false); // Modal visibility
 
   useEffect(() => {
-    fetch('https://localhost:7242/api/projects')
+    fetch('https://vivalpha.azurewebsites.net/api/Projects')
       .then((response) => response.json())
       .then((data) => setProjects(data))
       .catch((error) => console.error('Error fetching projects:', error));
