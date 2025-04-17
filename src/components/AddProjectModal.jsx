@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {api} from '../helpers/api';
 
 const AddProjectModal = ({ isOpen, onClose, onSubmit }) => {
   const [clients, setClients] = useState([]);
@@ -8,23 +9,23 @@ const AddProjectModal = ({ isOpen, onClose, onSubmit }) => {
   useEffect(() => {
     if (!isOpen) return;
 
-    fetch('https://vivalpha.azurewebsites.net/api/Clients')
-      .then(res => res.json())
-      .then(setClients)
-      .catch(err => console.error('Error fetching clients:', err));
+    (async () => {
+        try {
+          const [c, u, s] = await Promise.all([
+            api('/Clients').then(r => r.json()),
+            api('/Users').then(r => r.json()),
+            api('/Statuses').then(r => r.json()),
+          ]);
+          setClients(c);
+          setUsers(u);
+          setStatuses(s);
+        } catch (err) {
+          console.error('Error pre‑loading dropdowns', err);
+        }
+      })();
+    }, [isOpen]);
 
-    fetch('https://vivalpha.azurewebsites.net/api/Users')
-      .then(res => res.json())
-      .then(setUsers)
-      .catch(err => console.error('Error fetching users:', err));
-
-    fetch('https://vivalpha.azurewebsites.net/api/Statuses')
-      .then(res => res.json())
-      .then(setStatuses)
-      .catch(err => console.error('Error fetching statuses:', err));
-  }, [isOpen]);
-
-  console.log('Clients:', clients);
+    console.log('Clients:', clients);
     console.log('Users:', users);
     console.log('Statuses:', statuses);
   const handleSubmit = async (e) => {
@@ -42,25 +43,22 @@ const AddProjectModal = ({ isOpen, onClose, onSubmit }) => {
     };
 
     try {
-      const response = await fetch('https://vivalpha.azurewebsites.net/api/Projects', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newProject)
-      });
+        const res = await api('/Projects', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newProject),
+          });
 
-      if (response.ok) {
-        const createdProject = await response.json();
-        onSubmit(createdProject); // Update state in parent
-        onClose();
-      } else {
-        console.error('Failed to add project');
-      }
-    } catch (err) {
-      console.error('Error posting project:', err);
-    }
-  };
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const created = await res.json();
+    
+          onSubmit(created);       // lift to parent
+          onClose();               // close modal
+        } catch (err) {
+          console.error('Error posting project:', err);
+          alert('Failed to add project');
+        }
+      };
 
   if (!isOpen) return null;
 

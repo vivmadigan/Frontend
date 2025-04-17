@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import PortalLayout from './layouts/PortalLayout';
-import ProjectCard from './components/ProjectCard'; // Make sure this file exists
-import AddProjectModal from './components/AddProjectModal'; // Make sure this file exists
+import ProjectCard from './components/ProjectCard'; 
+import AddProjectModal from './components/AddProjectModal'; 
+import { api } from './helpers/api'; 
 
 function App() {
   const [projects, setProjects] = useState([]);
   const [showModal, setShowModal] = useState(false); // Modal visibility
 
   useEffect(() => {
-    fetch('https://vivalpha.azurewebsites.net/api/Projects')
-      .then((response) => response.json())
-      .then((data) => setProjects(data))
-      .catch((error) => console.error('Error fetching projects:', error));
+    api('/Projects')
+       .then(res => res.json())
+       .then(setProjects)
+       .catch(err => console.error('Error fetching projects', err))
   }, []);
 
   const handleAddProject = (newProject) => {
-    setProjects([...projects, newProject]);
+    setProjects(prev => [...prev, newProject]);
   };
 
   return (
