@@ -32,7 +32,7 @@ export default function ProjectCard({ project, onView, onEdit, onDelete }) {
 
   return (
     // Clicking anywhere on the card opens the "View Project" modal
-    <div className="project-card" onClick={() => onView(project)}>
+    <div className="project-card card" onClick={() => onView(project)}>
       {/* Header row: project name + kebab button */}
       <div className="card-head">
         <h4 className="h4">{project.projectName}</h4>

@@ -1,17 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap");
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
 
 :root {
+  /* fonts */
   --font-standard: "Nunito", sans-serif;
   --font-logo: "Comfortaa", sans-serif;
   --font-fa-pro: "Font Awesome 6 Pro";
 
+  /* standard colors */
   --blue-light-opacity: rgba(45, 125, 204, 0.1);
   --blue-light: #dbedff;
   --blue-semilight: #9dceff;
@@ -38,6 +35,7 @@
   --white-100: #f5f7fa;
   --white-200: #f1f3f7;
   --white-300: #f0f1f5;
+  --white-400: #f8f9fa;
 
   --gray-100: #e8eaed;
   --gray-200: #ebeef2;
@@ -58,61 +56,135 @@
   --dark-opacity-20: rgba(26, 25, 38, 0.2);
   --dark-opacity-60: rgba(26, 25, 38, 0.6);
 
-  --background-color: var(--white-100);
-  --content-background-color: var(--white);
-  --sidebar-background-color: var(--white-100);
+  --transparent: transparent;
+  --box-shadow: 0 5px 5px 1px rgba(0, 0, 0, 0.5);
 
-  --text-color: var(--dark-400);
-  --text-muted-color: var(--gray-800);
-  --text-extra-muted-color: var(--gray-700);
-  --text-headline-color: var(--dark-100);
-
+  /* borders and dividers */
   --border-color: var(--gray-500);
   --border-focus-color: var(--blue-semilight);
+  --divider-color: var(--gray-500);
+  --divider-background-color: var(--white-100);
 
-  --btn-text-color: var(--white);
-  --btn-border-color: var(--white);
-  --btn-background-color: var(--blue);
-  --btn-hover-text-color: var(--white);
-  --btn-hover-border-color: var(--white);
-  --btn-hover-background-color: var(--blue-dark);
+  /* text and backgrounds */
+  --text-color: var(--dark-400);
+  --text-muted-color: var(--gray-800);
+  --text-muted-semilight-color: var(--gray-600);
+  --text-heading-color: var(--dark-100);
 
+  /* backgrounds */
+  --background-color: var(--white-200);
+  --modal-background-color: var(--dark-opacity-20);
+
+  /* dots */
+  --dot-red-background-color: var(--red-light);
+  --dot-yellow-background-color: var(--yellow-light);
+  --dot-green-background-color: var(--green-light);
+
+  /* links */
   --link-color: var(--blue);
-  --link-hover-color: var(--blue);
-
-  --navlink-text-color: var(--dark-200);
+  --link-hover-color: var(--dark-blue);
+  --navlink-text-color: var(--dark-400);
   --navlink-text-hover-color: var(--blue);
   --navlink-text-active-color: var(--blue);
   --navlink-background-color: transparent;
-  --navlink-background-hover-color: var(--blue-light);
+  --navlink-background-hover-color: var(--blue-light-opacity);
   --navlink-background-active-color: var(--blue-light-opacity);
 
-  --table-header-background-color: var(--white);
-  --table-header-text-color: var(--gray-800);
-  --table-tbody-tr-background-hover-color: var(--blue-accent-10);
+  /* buttons */
+  --btn-text-color: var(--white-100);
+  --btn-border-color: var(--white-100);
+  --btn-background-color: var(--blue);
+  --btn-hover-text-color: var(--white-100);
+  --btn-hover-border-color: var(--white-100);
+  --btn-hover-background-color: var(--blue-dark);
 
-  --modal-screen-background-color: var(--dark-100-a);
-  --modal-background-color: var(--white);
+  /* button notification */
+  --btn-notification-text-color: var(--dark-400);
+  --btn-notification-text-hover-color: var(--dark-400);
+  --btn-notification-background-color: var(--transparent);
+  --btn-notification-background-hover-color: var(--blue-light-opacity);
 
-  --form-text-color: var(--white);
-  --form-border-color: var(--white);
-  --form-background-color: var(--white);
+  /* button external */
+  --btn-external-text-color: var(--dark-400);
+  --btn-external-border-color: var(--gray-500);
+  --btn-external-background-color: var(--white-200);
+  --btn-external-hover-text-color: var(--white-100);
+  --btn-external-hover-border-color: var(--white-100);
+  --btn-external-hover-background-color: var(--blue-dark);
+
+  /* card */
+  --card-text-color: var(--dark-400);
+  --card-border-color: var(--white-100);
+  --card-background-color: var(--white-100);
+
+
+  /* forms */
+  --form-text-color: var(--dark-400);
+  --form-border-color: var(--transparent);
+  --form-background-color: var(--transparent);
+
+  /* form label */
   --form-label-color: var(--dark-200);
+
+  /* form input */
   --form-input-text-color: var(--dark-200);
   --form-input-placeholder-color: var(--gray-600);
-  --form-input-background-color: var(--white);
-  --form-input-border-color: var(--gray-600);
+  --form-input-background-color: var(--white-100);
+  --form-input-border-color: var(--gray-400);
   --form-input-border-focus-color: var(--blue-semilight);
-  --form-error-input-text-color: var(--dark-200);
-  --form-error-input-background-color: var(--white);
+
+  /* form errors */
+  --form-error-input-text-color: var(--dark-400);
+  --form-error-input-background-color: var(--white-100);
   --form-error-input-border-color: var(--red-semilight);
   --form-error-input-border-focus-color: var(--blue-semilight);
   --form-error-message-text-color: var(--red-dark);
   --form-error-message-background-color: var(--red-light);
   --form-error-message-border-color: var(--red-light);
+
+  /* alert */
+  --alert-notification-text-color: var(--blue-dark);
+  --alert-notification-background-color: var(--blue-semilight);
+
+  /* alert - success */
+  --alert-notification-success-text-color: var(--green-dark);
+  --alert-notification-success-background-color: var(--green-light);
+
+  /* alert - warning */
+  --alert-notification-warning-text-color: var(--yellow-dark);
+  --alert-notification-warning-background-color: var(--yellow-light);
+
+  /* alert - error */
+  --alert-notification-error-text-color: var(--red-dark);
+  --alert-notification-error-background-color: var(--red-light);
+
+  /* account */
+  --account-info-background-color: var(--dark-300);
+  --account-info-text-color: var(--white-200);
+  --account-option-text-color: var(--white-200);
+  --account-option-background-color: var(--transparent);
+  --account-option-background-hover-color: var(--blue-light-opacity);
+  --account-option-text-hover-color: var(--white-200);
+
+  /* user-notification */
+  --user-notification-text-color: var(--dark-400);
+  --user-notification-background-color: var(--transparent);
+  --user-notification-background-hover-color: var(--blue-light-opacity);
+  --user-notification-active-background-color: var(--blue-light-opacity);
+  --user-notification-number-background-color: var(--red);
+  --user-notification-number-text-color: var(--white-100);
+  --user-notification-text-muted-color: var(--gray-600);
+  --user-notification-background-hover-color: var(--blue-light-opacity);
+
 }
 
 /* structure */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 html,
 body {
@@ -125,8 +197,8 @@ body {
   background-color: var(--background-color);
 }
 
-.wrapper-centerscreen {
-  display: grid;
+.center-wrapper {
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 100dvh;
@@ -677,7 +749,7 @@ section > .content {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -690,7 +762,7 @@ section > .content {
   padding: 2rem;
   width: 90%;
   max-width: 600px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 .modal-content h2 {
@@ -709,75 +781,77 @@ section > .content {
   gap: 1rem;
 }
 .tabs {
-  display:inline-flex;
-  gap:1rem;
-  margin-right:auto;
+  display: inline-flex;
+  gap: 1rem;
+  margin-right: auto;
 }
 .tabs button {
-  background:none;
-  border:none;
-  font-weight:600;
-  cursor:pointer;
-  padding:0.25rem 0;
-  border-bottom:2px solid transparent;
+  background: none;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
 }
 .tabs button.active {
-  border-color:#3478f6; /* or your primary colour */
+  border-color: #3478f6; /* or your primary colour */
 }
 /* ---- card container -------------------------------------------------- */
 .project-card {
-  background:#fff;
-  border-radius:12px;
-  padding:1rem 1.25rem;
-  box-shadow:0 2px 6px rgba(0,0,0,.06);
-  position:relative;             /* keeps menu positioned */
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  position: relative; /* keeps menu positioned */
 }
 
 /* ---- header row: title & kebab -------------------------------------- */
 .card-head {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* kebab button */
-.kebab-btn{
-  background:none;
-  border:none;
-  font-size:20px;
-  cursor:pointer;
-  line-height:1;
+.kebab-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
 }
 
 /* ---- dropdown menu --------------------------------------------------- */
-.kebab-menu{
-  position:absolute;
-  top:2.2rem;              /* adjust so it sits below button */
-  right:1rem;
-  list-style:none;
-  margin:0;
-  padding:4px 0;
-  background:#fff;
-  border-radius:8px;
-  box-shadow:0 4px 12px rgba(0,0,0,.1);
-  min-width:120px;
-  z-index:5;
+.kebab-menu {
+  position: absolute;
+  top: 2.2rem; /* adjust so it sits below button */
+  right: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 120px;
+  z-index: 5;
 }
-.kebab-menu li{
-  padding:8px 16px;
-  cursor:pointer;
-  white-space:nowrap;
+.kebab-menu li {
+  padding: 8px 16px;
+  cursor: pointer;
+  white-space: nowrap;
 }
-.kebab-menu li:hover{
-  background:#f5f5f7;
+.kebab-menu li:hover {
+  background: #f5f5f7;
 }
 /* --- layout ------------------------------------------------------ */
 .page-header {
-  position: relative;          /* lets us pin the Add button */
+  position: relative; /* lets us pin the Add button */
   margin-bottom: 1.5rem;
 }
 
-.title { margin: 0 0 0.5rem 0; }
+.title {
+  margin: 0 0 0.5rem 0;
+}
 
 /* --- add button (top‑right) ------------------------------------- */
 .add-btn {
@@ -794,11 +868,11 @@ section > .content {
 
 /* --- tabs -------------------------------------------------------- */
 .tabs {
-  display: inline-flex;        /* sit next to each other */
-  gap: 1.2rem;                 /* space between buttons */
-  border-bottom: 1px solid #e0e4ea;  /* divider line under tabs */
-  padding-bottom: 4px;         /* space above the divider */
-  margin-right: 120px;         /* leave room for the Add button */
+  display: inline-flex; /* sit next to each other */
+  gap: 1.2rem; /* space between buttons */
+  border-bottom: 1px solid #e0e4ea; /* divider line under tabs */
+  padding-bottom: 4px; /* space above the divider */
+  margin-right: 120px; /* leave room for the Add button */
 }
 
 .tab {
@@ -811,15 +885,14 @@ section > .content {
 }
 
 .tab.active {
-  border-color: #3f7df8;       /* highlight active tab */
+  border-color: #3f7df8; /* highlight active tab */
 }
 
 .tab:hover:not(.active) {
-  color: #3f7df8;              /* optional hover effect */
+  color: #3f7df8; /* optional hover effect */
 }
 
 /* --- grid spacing ------------------------------------------------ */
 .projects-grid {
-  margin-top: 1rem;            /* gap below the divider */
+  margin-top: 1rem; /* gap below the divider */
 }
-
