@@ -708,3 +708,118 @@ section > .content {
   justify-content: flex-end;
   gap: 1rem;
 }
+.tabs {
+  display:inline-flex;
+  gap:1rem;
+  margin-right:auto;
+}
+.tabs button {
+  background:none;
+  border:none;
+  font-weight:600;
+  cursor:pointer;
+  padding:0.25rem 0;
+  border-bottom:2px solid transparent;
+}
+.tabs button.active {
+  border-color:#3478f6; /* or your primary colour */
+}
+/* ---- card container -------------------------------------------------- */
+.project-card {
+  background:#fff;
+  border-radius:12px;
+  padding:1rem 1.25rem;
+  box-shadow:0 2px 6px rgba(0,0,0,.06);
+  position:relative;             /* keeps menu positioned */
+}
+
+/* ---- header row: title & kebab -------------------------------------- */
+.card-head {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+/* kebab button */
+.kebab-btn{
+  background:none;
+  border:none;
+  font-size:20px;
+  cursor:pointer;
+  line-height:1;
+}
+
+/* ---- dropdown menu --------------------------------------------------- */
+.kebab-menu{
+  position:absolute;
+  top:2.2rem;              /* adjust so it sits below button */
+  right:1rem;
+  list-style:none;
+  margin:0;
+  padding:4px 0;
+  background:#fff;
+  border-radius:8px;
+  box-shadow:0 4px 12px rgba(0,0,0,.1);
+  min-width:120px;
+  z-index:5;
+}
+.kebab-menu li{
+  padding:8px 16px;
+  cursor:pointer;
+  white-space:nowrap;
+}
+.kebab-menu li:hover{
+  background:#f5f5f7;
+}
+/* --- layout ------------------------------------------------------ */
+.page-header {
+  position: relative;          /* lets us pin the Add button */
+  margin-bottom: 1.5rem;
+}
+
+.title { margin: 0 0 0.5rem 0; }
+
+/* --- add button (top‑right) ------------------------------------- */
+.add-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 6px 14px;
+  background: #3f7df8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* --- tabs -------------------------------------------------------- */
+.tabs {
+  display: inline-flex;        /* sit next to each other */
+  gap: 1.2rem;                 /* space between buttons */
+  border-bottom: 1px solid #e0e4ea;  /* divider line under tabs */
+  padding-bottom: 4px;         /* space above the divider */
+  margin-right: 120px;         /* leave room for the Add button */
+}
+
+.tab {
+  background: none;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.tab.active {
+  border-color: #3f7df8;       /* highlight active tab */
+}
+
+.tab:hover:not(.active) {
+  color: #3f7df8;              /* optional hover effect */
+}
+
+/* --- grid spacing ------------------------------------------------ */
+.projects-grid {
+  margin-top: 1rem;            /* gap below the divider */
+}
+
