@@ -1,12 +1,52 @@
-# React + Vite
+# Frontend – React (Vite) App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple front-end application built with React that allows users to view, add, edit, and delete project entries. It is designed to work with a RESTful ASP.NET Web API backend and uses API key authentication instead of a traditional login system.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **CRUD Operations:** Add, view, update, and delete projects.
+- **Filtering:** Filter projects by status (e.g., "All" or "Completed").
+- **Clean UI:** User-friendly layout and modal-based interactions for adding and editing projects.
 
-## Expanding the ESLint configuration
+## Technical Overview
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Framework:** React with Vite for fast development and bundling.
+- **API Communication:** Uses `fetch` via a small helper (`api.js`) that automatically includes the API key.
+- **State Management:** Uses `useState`, `useEffect`, and props to manage state and UI flow.
+- **Modal Forms:** Reusable modals for both creating and editing projects.
+- **Styling:** Simple CSS and responsive layout for clean interaction.
+
+## API Authentication
+
+Instead of login functionality, the app uses an API key passed in the `x-api-key` header for all requests to the backend API.
+
+## Setup and Development
+
+1. Clone the repo.
+2. Create a `.env` file in the root and configure:
+   ```env
+   VITE_API_URL=https://your-api-url/api
+   VITE_API_KEY=your-api-key-here
+   ```
+3. Run the dev server:
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+## Deployment
+
+- Build for production using `npm run build`.
+- Deploy the contents of the `dist/` folder to your preferred static hosting (e.g., Azure Static Web App, Netlify, Vercel).
+
+## Technologies Used
+
+- React
+- Vite
+- Vanilla CSS
+- REST API Integration (with API key auth)
+
+## Notes
+
+This frontend assumes the backend is already deployed and exposes a set of endpoints for managing projects via an API key. Make sure CORS is properly configured on the backend to allow your deployed frontend to communicate with it.
+
