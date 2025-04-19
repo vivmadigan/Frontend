@@ -47,6 +47,8 @@ export default function ProjectModal({ isOpen, initial, onClose }) {
       return;
     }
 
+    // I could try Object.fromEntries(formData) but I want to be explicit about the data I’m sending
+
     const projectData = {
       projectName: formData.get("projectName"),
       description: formData.get("description"),
@@ -105,6 +107,9 @@ export default function ProjectModal({ isOpen, initial, onClose }) {
         <h2>{isEditing ? "Edit Project" : "Add Project"}</h2>
 
         {/* no need for onSubmit or preventDefault with new react19 forms*/}
+        {/* BUT: if we're editing, show the existing value from the project (initial)
+          Otherwise just start with an empty input when adding something new */}
+
         <form ref={formRef} action={handleFormSubmit}>
           {/* Project name */}
           <input
